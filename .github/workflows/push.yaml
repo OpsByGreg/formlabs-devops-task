@@ -1,0 +1,32 @@
+name: Push
+
+on:
+  push:
+    tags:
+      - '[0-9]+.[0-9]+.[0-9]+' # Trigger on SEMVER tags
+
+jobs:
+  docker-build-and-push:
+    runs-on: ubuntu-24.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    - name: Build image
+      run: make build image-tag=${{ github.ref_name }}
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v5
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: eu-west-2
+    - name: Login to ECR
+      id: login-to-ecr
+      uses: aws-actions/amazon-ecr-login@v2
+    - name: Push to ECR
+      env:
+        REGISTRY: ${{ steps.login-to-ecr.outputs.registry }}
+        REPOSITORY: helloapp
+        TAG: ${{ github.ref_name }}
+      run: |
+        docker build -t $REGISTRY/$REPOSITORY:$TAG -f helloapp.Dockerfile .
+        docker push $REGISTRY/$REPOSITORY:$TAG

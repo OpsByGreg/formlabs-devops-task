@@ -1,0 +1,15 @@
+name: Validate
+
+on:
+  push:
+    branches-ignore:
+      - master
+
+jobs:
+  docker-build-and-test:
+    runs-on: ubuntu-24.04
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+    - name: Build and test image
+      run: make test
