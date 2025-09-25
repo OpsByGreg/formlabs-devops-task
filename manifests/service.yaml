@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: helloapp
+  name: helloapp-service
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+  selector:
+    app: helloapp
+  sessionAffinity: None
+  type: NodePort
