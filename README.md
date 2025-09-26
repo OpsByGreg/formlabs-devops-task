@@ -21,3 +21,27 @@ See all open jobs at https://careers.formlabs.com/
 
 - Explain as much as possible in the commit message(s) and/or comments if needed. See more on commit messages [here](https://chris.beams.io/posts/git-commit/).
 - It would be great if you'd also write about why you choose a certain technology if there are alternatives to consider.
+
+## Solution
+
+### Pre-requisites
+
+- Docker installed and running locally https://docs.docker.com/engine/install/
+- Minikube installed and running https://minikube.sigs.k8s.io/docs/start/?arch=%2Fwindows%2Fx86-64%2Fstable%2F.exe+download
+
+### General notes
+
+Please find the following 4 branches in the repository:
+
+- TASK-01
+- TASK-02
+- TASK-03
+- master
+
+They build on each other and TASK-03 is up to date with master. So checkout master to play with the code.
+Please see `git log` for a detailed commit messages, 1 for each task.
+
+For the automation, I decided to implement workflows via GitHub Actions to run tests and push the tagged image to an ECR repository in my personal AWS account.
+
+I look forward to working through the code with you.
+
