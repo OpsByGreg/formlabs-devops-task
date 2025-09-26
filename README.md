@@ -31,17 +31,16 @@ See all open jobs at https://careers.formlabs.com/
 
 ### General notes
 
-Please find the following 4 branches in the repository:
+Please find the following 3 branches in the repository:
 
 - TASK-01
 - TASK-02
 - TASK-03
-- master
 
-They build on each other and TASK-03 is up to date with master. So checkout master to play with the code.
+They build on each other for each task with TASK-03 containing the full solution. So checkout TASK-03 to play with the code.
 Please see `git log` for a detailed commit messages, 1 for each task.
 
 For the automation, I decided to implement workflows via GitHub Actions to run tests and push the tagged image to an ECR repository in my personal AWS account.
 
-I look forward to working through the code with you.
+I look forward to working through the code with you!
 
